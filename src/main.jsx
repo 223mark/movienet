@@ -22,6 +22,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<App />}>
       <Route index={true} element={ <HomeScreen/> } />
       <Route path='/movies/:id' element={<DeatilsScreen />} />
+      <Route path='/series/:id' element={<DeatilsScreen />} />
       <Route path='/movies' element={<MoviesScreen />} />
       <Route path='/series' element={<SeriesScreen />}/>
       

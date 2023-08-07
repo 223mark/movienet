@@ -4,7 +4,7 @@ import axios from "axios";
 const useFetch = (url) => {
   const movieUrl = "https://api.themoviedb.org/3/";
   const apiEndpoint = movieUrl + url;
-  console.log(apiEndpoint);
+  // console.log(apiEndpoint);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -14,6 +14,7 @@ const useFetch = (url) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+     
       try {
           const response = await axios.get(apiEndpoint, {
             headers: {
@@ -21,8 +22,12 @@ const useFetch = (url) => {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0OTg3MjVmMmFmN2VhYzU4YjZjMTY3N2FlNmJjZDU3MSIsInN1YiI6IjY0YjhlNDM0YWI2ODQ5MDBlMjMwNWNlMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-VeZllYKmSJctuk5ZFxOhocqzGjbdDeRBZfboW2nFe8'
   }
         });
-  
-        setData(response.data.results);
+        if (response.data.results) {
+          setData(response.data.results);
+        } else {
+          setData(response.data)
+        }
+        
       } catch (err) {
         setError(err.message);
         

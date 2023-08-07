@@ -3,33 +3,41 @@ import  useFetch  from '../hooks/useFetch';
 import Loader from '../components/Loader';
 import MovieRow from "../components/MovieRow";
 import { useEffect } from "react";
-import { fetchMovies } from "../features/movies/movieSlice";
 import { useDispatch, useSelector } from "react-redux";
+import NavContainer from "../components/NavContainer";
 const HomeScreen = () => {
-  const dispatch = useDispatch();
+  const isSearch = useSelector(state => state.globalState.search);
   
-  const { data: upcomingMovies, loading, } = useFetch('/movie/upcoming?language=en-US');
+  const { data: upcomingMovies, loading, } = useFetch('/movie/upcoming?language=eng');
 
   const { data: topRatedMovies, loadng: loadingTopRated } = useFetch('movie/top_rated');
   const { data: newReleasedMovies, loading: loadingNew } = useFetch('movie/now_playing ');
   const { data: newSeries, loading: loadingNewSeries } = useFetch('tv/top_rated')
  
-  // const { movies: topra, loading, error } = useSelector((state) => state.movies);
-  // console.log(movies, 'h');
-  // useEffect(() => {
-  //   dispatch(fetchMovies('movie/upcoming'));
-  // }, [dispatch])
+  
   
   return (
-    <div className="space-y-3">
-      {loading ? <Loader /> : <Banner upcomingMovies={upcomingMovies} />}
+    <div className="space-y-3 min-h-screen ">
+      {/* hero banner */}
+      {/* {loading ? <Loader /> : <Banner upcomingMovies={upcomingMovies} />} */}
+      {!loading  && <Banner upcomingMovies={upcomingMovies} />}
+      {/* hero banner end */}
+
+      {/* nav container */}
+      <NavContainer />
+      {/* nav container end */}
+
+      <div className={`bg-black ${isSearch? 'opacity-70': 'opacity-100'}  `}>
+         {/* mvies || series rows */}
       {
-        loadingNew ? <Loader/> : <MovieRow title='New Releases' movies={newReleasedMovies}/>
+        !loadingNew && <MovieRow title='New Releases' movies={newReleasedMovies}/>
       }
       {
-        loadingNewSeries ? <Loader /> : <MovieRow title='New Series' movies={newSeries} isSeries={true} />
+        !loadingNewSeries && <MovieRow title='New Series' movies={newSeries} isSeries={true} />
       }
-      {loadingTopRated ? <Loader /> : <MovieRow title='Top Rated Movies' movies={topRatedMovies} />}
+      {!loadingTopRated && <MovieRow title='Top Rated Movies' movies={topRatedMovies} />}
+      {/* mvies || series rows end */}
+     </div>
       
     </div>
      

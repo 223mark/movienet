@@ -2,30 +2,40 @@ import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import useFetch from "../hooks/useFetch";
 import { Paginator } from "../components/Paginator";
+import NavContainer from "../components/NavContainer";
+import { useSelector } from "react-redux";
 const MoviesScreen = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
    const { data, loading, error , reFetch} = useFetch(`/movie/now_playing?language=en-US&page=${page}`);
-   
-  console.log(loading,'lo');
+  const isSearch = useSelector(state => state.globalState.search);
+  const  searchedMovies  = useSelector(state => state.movies.movies);
+
   useEffect(() => {
     
     setMovies(data);
   }, [data])
-  console.log(page, 'page');
+ 
   return (
-    <div className="px-[50px]">
-      <div className="flex flex-wrap justify-between items-center gap-5 ">
-      {
-       movies &&  movies.map((movie) => (
+    <div className="px-4 md:px-[50px] min-h-screen">
+      <NavContainer/>
+      <div className={`${isSearch ? 'opacity-70': 'opacity-100' } mt-1 sm:mt-2 md:mt-4`}>
+        <div className="flex flex-wrap justify-between items-center gap-2 md:gap-5 ">
+          {
+            searchedMovies.length === 0 ? (
+         movies.map((movie) => (
           <MovieCard data={movie} key={movie.id} />
-        ))
+       ))) :
+              searchedMovies.map((movie) => (
+              <MovieCard data={movie} key={movie.id} />
+            ))  
       }
       </div>
       {!loading &&
-        <div className="flex justify-end items-center pt-[80px] ">
+        <div className="flex justify-start items-center pt-[80px] md:justify-end ">
         <Paginator page={page} setPage={setPage} />
       </div>}
+      </div>
     </div>
   )
 }
