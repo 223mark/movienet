@@ -1,4 +1,4 @@
-
+// dependecies
 import { Pagination } from 'flowbite-react';
 export  function Paginator({page, setPage}) {
 

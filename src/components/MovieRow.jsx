@@ -1,7 +1,11 @@
+// dependecies
 import { useRef, useState } from 'react';
 import { AiOutlineRight, AiOutlineLeft } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+
+// components
 import CarouselMovieItem from './CarouselMovieItem';
+
 const MovieRow = ({ title, movies, isSeries = false }) => {
     const movieRef = useRef();
     const [slideNumber, setSlideNumber] = useState(0);
@@ -41,7 +45,7 @@ const MovieRow = ({ title, movies, isSeries = false }) => {
                 {movies.map((movie) => (
                     // <MovieCard movie={movie} key={movie.id} />
                     
-                    <Link to={`/movies/${movie.id}`} key={movie.id}>
+                    <Link to={` ${isSeries ? `/series/${movie.id}` : `/movies/${movie.id}`  }`} key={movie.id}>
                         <CarouselMovieItem data={movie} isSeries={isSeries} />
                     </Link>
                     

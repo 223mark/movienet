@@ -1,10 +1,15 @@
+// dependecies
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+// components
 import MovieCard from "../components/MovieCard";
 import useFetch from "../hooks/useFetch";
 import { Paginator } from "../components/Paginator";
-import { Link } from "react-router-dom";
+
 import NavContainer from "../components/NavContainer";
-import { useSelector } from "react-redux";
+
 const SeriesScreen = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);

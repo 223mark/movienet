@@ -1,5 +1,7 @@
+// dependecies
 import { useState } from "react";
-import {AiOutlinePlayCircle} from 'react-icons/ai'
+import { AiOutlinePlayCircle } from 'react-icons/ai'
+
 const CarouselMovieItem = ({ data, isSeries = false }) => {
     const [isHover, setIsHover] = useState(false);
   return (

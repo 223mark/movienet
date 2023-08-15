@@ -1,12 +1,16 @@
-import {Link, NavLink, useLocation} from 'react-router-dom'
+// dependecies
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import {AiOutlineHeart, AiOutlineHome} from 'react-icons/ai'
 import { BiMoviePlay } from 'react-icons/bi';
 import { RiMovie2Line } from 'react-icons/ri';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+// slices
 import { searchHandler } from '../features/globalState/globalStateSlice';
 import { searchMovies, serachSeries } from '../features/movies/movieSlice';
+
 const NavContainer = () => {
     const { pathname } = useLocation();
      const [keyword, setKeyword] = useState('');

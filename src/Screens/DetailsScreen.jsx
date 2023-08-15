@@ -1,7 +1,10 @@
+// depenedcies
 import { useLocation, useParams, Link } from "react-router-dom"
 import useFetch from "../hooks/useFetch"
 import { useEffect, useState } from "react";
-import {AiOutlinePlayCircle, AiFillHome} from 'react-icons/ai';
+import { AiOutlinePlayCircle } from 'react-icons/ai';
+
+// components
 import MovieRow from "../components/MovieRow";
 
 const DetailsScreen = () => {

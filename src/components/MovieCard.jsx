@@ -1,6 +1,8 @@
+// dependecies
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import {AiOutlinePlayCircle} from 'react-icons/ai'
+import { AiOutlinePlayCircle } from 'react-icons/ai'
+
 const MovieCard = ({ data, isSeries = false }) => {
   const [isHover, setIsHover] = useState(false);
   return (

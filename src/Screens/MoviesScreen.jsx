@@ -1,13 +1,17 @@
+// dependecies
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
+// components
 import MovieCard from "../components/MovieCard";
 import useFetch from "../hooks/useFetch";
 import { Paginator } from "../components/Paginator";
 import NavContainer from "../components/NavContainer";
-import { useSelector } from "react-redux";
+
 const MoviesScreen = () => {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
-   const { data, loading, error , reFetch} = useFetch(`/movie/now_playing?language=en-US&page=${page}`);
+   const { data, loading} = useFetch(`/movie/now_playing?language=en-US&page=${page}`);
   const isSearch = useSelector(state => state.globalState.search);
   const  searchedMovies  = useSelector(state => state.movies.movies);
 

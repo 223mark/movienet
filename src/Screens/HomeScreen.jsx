@@ -1,10 +1,12 @@
+// dependencies
+import {  useSelector } from "react-redux";
+
+// components
 import Banner from "../components/Banner"
 import  useFetch  from '../hooks/useFetch';
-import Loader from '../components/Loader';
 import MovieRow from "../components/MovieRow";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import NavContainer from "../components/NavContainer";
+
 const HomeScreen = () => {
   const isSearch = useSelector(state => state.globalState.search);
   

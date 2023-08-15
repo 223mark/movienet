@@ -1,3 +1,4 @@
+// dependecies
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
@@ -10,7 +11,10 @@ import {
 
 } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import {store} from './app/store.js'
+
+// store
+import { store } from './app/store.js'
+
 // components
 import HomeScreen from './Screens/HomeScreen.jsx'
 import DeatilsScreen from './Screens/DetailsScreen.jsx'
