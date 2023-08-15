@@ -7,6 +7,7 @@ import MovieCard from "../components/MovieCard";
 import useFetch from "../hooks/useFetch";
 import { Paginator } from "../components/Paginator";
 import NavContainer from "../components/NavContainer";
+import { searchMovies } from "../features/movies/movieSlice";
 
 const MoviesScreen = () => {
   const [page, setPage] = useState(1);
@@ -35,7 +36,7 @@ const MoviesScreen = () => {
             ))  
       }
       </div>
-      {!loading &&
+      { searchMovies.length === 0 &&
         <div className="flex justify-start items-center pt-[80px] md:justify-end ">
         <Paginator page={page} setPage={setPage} />
       </div>}

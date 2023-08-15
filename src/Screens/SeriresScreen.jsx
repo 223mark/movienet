@@ -9,6 +9,7 @@ import useFetch from "../hooks/useFetch";
 import { Paginator } from "../components/Paginator";
 
 import NavContainer from "../components/NavContainer";
+import { serachSeries } from "../features/movies/movieSlice";
 
 const SeriesScreen = () => {
   const [page, setPage] = useState(1);
@@ -38,7 +39,7 @@ const SeriesScreen = () => {
       )
       }
       </div>
-      {!loading && 
+      { serachSeries.length === 0 && 
         <Link href='series'>
           <div className="flex justify-end items-center pt-[80px] ">
         <Paginator page={page} setPage={setPage} />

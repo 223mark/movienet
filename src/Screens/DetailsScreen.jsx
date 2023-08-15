@@ -34,8 +34,8 @@ const DetailsScreen = () => {
       <Link className="w-full h-[80vh] relative flex justify-end items-end px-2 py-[10px] mb-4 md:px-[100px] " style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${data?.poster_path}')`, backgroundSize: 'cover' }}>
       
       <div className="flex-1 flex flex-col justify-between items-center gap-[10px]  mx-auto sm:flex-row md:flex-row">
-        <div className="h-[200px] sm:[200px] md:h-[350px] relative">
-            <img src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`} alt="" className="w-full h-full rounded-md shadow-lg object-cover" />
+        <div className=" relative">
+            <img src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`} alt="" className="h-[200px] sm:[200px] md:h-[350px] rounded-md shadow-lg object-cover" />
             <AiOutlinePlayCircle  className='absolute left-0 bottom-0  top-0 right-0 m-auto text-[100px] text-white hover:text-green-500'/>
         </div>
         <div className="flex-1 flex flex-col space-y-2 bg-black opacity-80 px-4 py-2 ">
